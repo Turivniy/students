@@ -6,19 +6,15 @@ import sys
 
 username = os.environ['USER']
 
-# args_lenth = len(sys.argv)
-# print 'Number of arguments:', args_lenth, 'arguments.'
-# print 'Argument List:', sys.argv[1]
-
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
 # create a file handler
-handler = logging.FileHandler('/tmp/students_logs/{}.log'.format(username))
+handler = logging.FileHandler('/tmp/students_logs/{}_v3.log'.format(username))
 handler.setLevel(logging.INFO)
 
 # create a logging format
-formatter = logging.Formatter('[%(asctime)s] [{}] %(message)s'.format(username))
+formatter = logging.Formatter('[%(asctime)s][v3][{}] %(message)s'.format(username))
 handler.setFormatter(formatter)
 
 # add the handlers to the logger
@@ -27,37 +23,32 @@ logger.addHandler(handler)
 
 def count_prize(age):
 
-    if type(age) is not int:
-        print "Not integer. Enter valid value"
-        return -1
-
-    if age in [0, 12, 13, 17, 18, 59, 60, 99] or age < 0 or age > 99:
-        logger.info('BORDER VALUE Age is: {}'.format(age))
-
-    if age not in range(0, 100):
-        logger.info('Age is: {}'.format(age))
-        print "Not in range 0, 99. Enter valid value"
+    try:
+        age = int(age)
+    except ValueError:
+        logger.info('INVALID VALUE: -1')
+        print "\n\tNot integer. Enter valid value\n"
         return -1
 
     if age in range(0, 13):
-        print "Children. Your payment is 10$ per month"
+        print "\n\tChildren. Your payment is 10$ per month\n"
         prize = 10
         logger.info('Age is: {}'.format(age))
         return prize
 
     if age in range(13, 18):
-        print "Teens. Your payment is 20$ per month"
+        print "\n\tTeens. Your payment is 20$ per month\n"
         prize = 20
         logger.info('Age is: {}'.format(age))
         return prize
     if age in range(18, 60):
-        print "Adults. Your payment is 30$ per month"
+        print "\n\tAdults. Your payment is 30$ per month\n"
         prize = 30
         logger.info('Age is: {}'.format(age))
         return prize
 
     if age in range(60, 100):
-        print "Pensioners. Your payment is 40$ per month"
+        print "\n\tPensioners. Your payment is 40$ per month\n"
         prize = 40
         logger.info('Age is: {}'.format(age))
         return prize
