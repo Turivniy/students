@@ -64,20 +64,3 @@ def count_prize(age):
 if __name__ == "__main__":
 
     count_prize(sys.argv[1])
-
-    # assert count_prize(7) == 10
-    # assert count_prize(15) == 20
-    # assert count_prize(22) == 30
-    # assert count_prize(70) == 40
-    #
-    # assert count_prize(0) == 10
-    # assert count_prize(12) == 10
-    #
-    # assert count_prize(13) == 20
-    # assert count_prize(17) == 20
-    #
-    # assert count_prize(18) == 30
-    # assert count_prize(59) == 30
-    #
-    # assert count_prize(60) == 40
-    # assert count_prize(99) == 40
