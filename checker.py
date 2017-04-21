@@ -17,14 +17,18 @@ def check(file_name):
     cool_items = []
     for item in content:
         age = item.split(' ')[-1]
+
         if item.split(' ')[-3] == 'INVALID':
             invalid_count += 1
+
         if age in check_items or age < 0 or age > 99:
             cool_items.append(int(age))
 
     for check_item in check_items:
         if check_item not in cool_items:
+
             grade -= 1
+
             print "{} was not checked!!!".format(check_item)
 
     counter = 0
